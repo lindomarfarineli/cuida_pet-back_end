@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:8.0.23
+    command: --default-authentication-plugin=mysql_native_password
+    ports: 
+      - 3306:3306
+    restart: always    
+    environment:
+      MYSQL_DATABASE: cuidapet_db
+      MYSQL_ROOT_PASSWORD: 332607
+      MYSQL_USER: acad
+      MYSQL_PASSWORD: 332608
+    volumes:
+     - ../mysql_cuidapet:/var/lib/mysql
