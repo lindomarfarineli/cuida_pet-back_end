@@ -115,5 +115,20 @@ class ChatController {
     }
   }
 
+  @Route.put('/<chatId>/end-chat')
+  Future<Response> endChat (Request request, String chatId) async{
+
+    try {
+      await service.endChat(int.parse(chatId));
+      return Response.ok(jsonEncode({}));
+    } catch (e, s) {
+      log.error('erro ao finalizar chat $chatId', e, s);
+      return Response.internalServerError(body: {
+        "message": "Erro ao finalizar chat"
+      });
+
+    }
+  }
+
   Router get router => _$ChatControllerRouter(this);
 }
